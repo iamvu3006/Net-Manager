@@ -1,0 +1,108 @@
+﻿@using Microsoft.AspNetCore.Http
+@{
+    var isLoggedIn = Context.Session.GetInt32("UserId") != null;
+    var isAdmin = Context.Session.GetInt32("IsAdmin") == 1;
+    var username = Context.Session.GetString("Username");
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Tiệm Net</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light border-bottom mb-4">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold text-primary" asp-controller="Home" asp-action="Index">
+                Tiệm Net
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav me-auto">
+                    @if (isLoggedIn && isAdmin)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Computers" asp-action="Index">📋 Quản lý máy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Users" asp-action="Index">👥 Quản lý người dùng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="UsageHistories" asp-action="Index">🕒 Đang sử dụng</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="reportDropdown" role="button" data-bs-toggle="dropdown">
+                                📊 Thống kê
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="reportDropdown">
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Admin" asp-action="RevenueByComputer">
+                                        💵 Theo máy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Admin" asp-action="RevenueByDate">
+                                        📅 Theo ngày
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else if (isLoggedIn)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Computers" asp-action="Choose">🖥 Chọn máy</a>
+                        </li>
+                    }
+                </ul>
+
+                <ul class="navbar-nav ms-auto">
+                    @if (!isLoggedIn)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Account" asp-action="Login">🔑 Đăng nhập</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Account" asp-action="Register">📝 Đăng ký</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <span class="nav-link text-success">Xin chào, @username</span>
+                        </li>
+                        @if (!isAdmin)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-warning" asp-controller="Account" asp-action="TopUp">💰 Nạp tiền</a>
+                            </li>
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" asp-controller="Account" asp-action="Logout">🚪 Đăng xuất</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="text-center py-3 border-top">
+        &copy; 2025 - Tiệm Net
+    </footer>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

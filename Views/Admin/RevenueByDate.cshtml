@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "📅 Doanh thu theo ngày";
+    var data = ViewBag.RevenueData;
+}
+
+<h2 class="mb-4 text-primary">@ViewData["Title"]</h2>
+
+<table class="table table-striped table-hover table-bordered shadow-sm">
+    <thead class="table-dark">
+        <tr class="text-center">
+            <th scope="col">📆 Ngày</th>
+            <th scope="col">💰 Tổng doanh thu (VNĐ)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (data != null && data.Count > 0)
+        {
+            foreach (var item in data)
+            {
+                <tr class="text-center align-middle">
+                    <td>@item.Date.ToString("dd/MM/yyyy")</td>
+                    <td class="text-success fw-bold">@String.Format("{0:N0}", item.TotalRevenue)</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="2" class="text-center text-muted">Không có dữ liệu thống kê.</td>
+            </tr>
+        }
+    </tbody>
+</table>

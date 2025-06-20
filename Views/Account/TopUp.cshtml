@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "💳 Nạp tiền vào tài khoản";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow border-0">
+            <div class="card-body">
+                <h3 class="card-title text-center text-primary mb-4">@ViewData["Title"]</h3>
+
+                @if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-success text-center fw-bold">
+                        @ViewBag.Message
+                    </div>
+                }
+
+                <form asp-action="TopUp" method="post">
+                    <div class="form-group mb-3">
+                        <label for="amount" class="form-label">💰 Số tiền cần nạp (VNĐ)</label>
+                        <input type="number" name="amount" class="form-control" step="1000" min="1000" placeholder="Nhập số tiền muốn nạp" required />
+                    </div>
+
+                    <div class="d-grid mb-3">
+                        <button type="submit" class="btn btn-primary fw-bold">Nạp tiền</button>
+                    </div>
+                </form>
+
+                @if (ViewBag.Balance != null)
+                {
+                    <div class="alert alert-info text-center">
+                        Số dư hiện tại: <strong>@String.Format("{0:N0}", ViewBag.Balance) VNĐ</strong>
+                    </div>
+                }
+
+                <div class="text-center mt-3">
+                    <a asp-controller="Computers" asp-action="Choose" class="btn btn-outline-secondary">
+                        ⬅️ Quay lại
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<MvcMovie.Models.UsageHistory>
+
+@{
+    ViewData["Title"] = "🕒 Đang sử dụng";
+}
+
+<h1 class="mb-4 text-center text-primary">@ViewData["Title"]</h1>
+
+<table class="table table-bordered table-hover shadow-sm">
+    <thead class="table-dark">
+        <tr class="text-center">
+            <th>👤 Người dùng</th>
+            <th>🖥️ Máy</th>
+            <th>⏰ Bắt đầu</th>
+            <th>⏳ Thời gian sử dụng</th>
+            <th>⚙️ Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Where(x => x.EndTime == null))
+        {
+            var timeId = $"duration_{item.UsageHistoryId}";
+            <tr>
+                <td class="align-middle">@item.User?.FullName (@item.UserId)</td>
+                <td class="align-middle">@item.Computer?.Name</td>
+                <td class="start-time align-middle text-center" data-start="@item.StartTime.ToString("o")">
+                    @item.StartTime.ToString("HH:mm:ss dd/MM/yyyy")
+                </td>
+                <td class="align-middle text-center">
+                    <span id="@timeId">Đang tính...</span>
+                </td>
+                <td class="align-middle text-center">
+                    <form asp-controller="Computers" asp-action="EndUsing" method="post" asp-route-usageHistoryId="@item.UsageHistoryId" onsubmit="return confirm('Bạn có chắc chắn muốn kết thúc phiên sử dụng không?');">
+                        <button type="submit" class="btn btn-danger btn-sm">🛑 Kết thúc</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!Model.Any(x => x.EndTime == null))
+{
+    <div class="alert alert-info mt-3 text-center">
+        Hiện không có người dùng nào đang sử dụng máy.
+    </div>
+}
+
+@section Scripts {
+    <script>
+        function updateDurations() {
+            document.querySelectorAll("td.start-time").forEach(function (cell) {
+                const start = new Date(cell.dataset.start);
+                const now = new Date();
+                const diff = now - start;
+                const hours = Math.floor(diff / 3600000);
+                const minutes = Math.floor((diff % 3600000) / 60000);
+                const seconds = Math.floor((diff % 60000) / 1000);
+                cell.nextElementSibling.querySelector('span').textContent =
+                    `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+            });
+        }
+
+        setInterval(updateDurations, 1000);
+        window.onload = updateDurations;
+    </script>
+}

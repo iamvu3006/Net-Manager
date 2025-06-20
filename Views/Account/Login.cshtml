@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "🔐 Đăng nhập hệ thống";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow-lg border-0">
+            <div class="card-body">
+                <h3 class="card-title text-center text-primary mb-4">@ViewData["Title"]</h3>
+
+                <form method="post">
+                    <div class="form-group mb-3">
+                        <label for="Username" class="form-label">👤 Tên đăng nhập</label>
+                        <input type="text" class="form-control" id="Username" name="username" placeholder="Nhập tên đăng nhập" required />
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="Password" class="form-label">🔑 Mật khẩu</label>
+                        <input type="password" class="form-control" id="Password" name="password" placeholder="Nhập mật khẩu" required />
+                    </div>
+
+                    <div class="d-grid mb-3">
+                        <button type="submit" class="btn btn-primary fw-bold">Đăng nhập</button>
+                    </div>
+
+                    <div class="text-center">
+                        <span>Chưa có tài khoản? </span><a href="/Account/Register">Đăng ký ngay</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

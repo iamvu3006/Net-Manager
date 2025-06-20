@@ -1,0 +1,56 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Thêm người dùng mới";
+}
+
+<h1 class="mb-4">🆕 Thêm người dùng</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" class="border p-4 rounded shadow-sm bg-light">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="Username" class="form-label fw-bold"></label>
+                <input asp-for="Username" class="form-control" placeholder="Tên đăng nhập..." />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label fw-bold"></label>
+                <input asp-for="Password" class="form-control" placeholder="Mật khẩu..." type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="FullName" class="form-label fw-bold"></label>
+                <input asp-for="FullName" class="form-control" placeholder="Họ và tên..." />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Phone" class="form-label fw-bold"></label>
+                <input asp-for="Phone" class="form-control" placeholder="Số điện thoại..." />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="Balance" class="form-label fw-bold"></label>
+                <input asp-for="Balance" class="form-control" placeholder="Số dư ban đầu..." />
+                <span asp-validation-for="Balance" class="text-danger"></span>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-secondary">⬅️ Quay lại</a>
+                <input type="submit" value="✅ Thêm" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

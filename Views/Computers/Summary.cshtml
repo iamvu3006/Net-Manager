@@ -1,0 +1,39 @@
+﻿@model MvcMovie.Models.UsageHistory
+
+@{
+    ViewData["Title"] = "Thông tin sử dụng máy";
+    var duration = (Model.EndTime - Model.StartTime)?.TotalMinutes ?? 0;
+    var startTime = Model.StartTime.ToString("HH:mm:ss dd/MM/yyyy");
+    var endTime = Model.EndTime?.ToString("HH:mm:ss dd/MM/yyyy") ?? "";
+}
+
+<div class="card shadow-lg p-4 rounded-4 mt-4" style="max-width: 650px; margin: auto;">
+    <h2 class="mb-4 text-center text-success">✅ Thông tin sử dụng máy</h2>
+
+    <ul class="list-group list-group-flush mb-4">
+        <li class="list-group-item">
+            <strong>🖥️ Máy:</strong> @Model.Computer?.Name
+        </li>
+        <li class="list-group-item">
+            <strong>⏱️ Bắt đầu lúc:</strong> @startTime
+        </li>
+        <li class="list-group-item">
+            <strong>⏹️ Kết thúc lúc:</strong> @endTime
+        </li>
+        <li class="list-group-item">
+            <strong>⏳ Tổng thời gian sử dụng:</strong> @duration.ToString("0.##") phút
+        </li>
+        <li class="list-group-item text-danger">
+            <strong>💸 Chi phí:</strong> @Model.TotalCost.ToString("N0") VND
+        </li>
+        <li class="list-group-item text-primary">
+            <strong>💰 Số dư còn lại:</strong> @Model.User?.Balance.ToString("N0") VND
+        </li>
+    </ul>
+
+    <div class="text-center">
+        <a href="@Url.Action("Choose", "Computers")" class="btn btn-outline-primary px-4 py-2 rounded-pill">
+            ⬅️ Quay lại chọn máy
+        </a>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@model MvcMovie.Models.UsageHistory
+
+@{
+    ViewData["Title"] = "Đang sử dụng máy";
+    var startTime = Model.StartTime.ToString("HH:mm:ss dd/MM/yyyy");
+}
+
+<div class="card shadow p-4 rounded-4 mt-4" style="max-width: 600px; margin: auto;">
+    <h2 class="mb-4 text-center text-primary">
+        💻 Máy đang được sử dụng
+    </h2>
+
+    <div class="mb-3">
+        <strong>🖥️ Máy:</strong> <span class="text-dark">@Model.Computer?.Name</span>
+    </div>
+    <div class="mb-3">
+        <strong>⏰ Bắt đầu lúc:</strong> <span class="text-dark">@startTime</span>
+    </div>
+    <div class="mb-3">
+        <strong>👤 Người dùng:</strong> <span class="text-dark">@Model.User?.FullName</span>
+    </div>
+
+    <form asp-action="EndUsing" method="post" class="mt-4 text-center">
+        <input type="hidden" name="usageHistoryId" value="@Model.UsageHistoryId" />
+        <button type="submit" class="btn btn-danger px-4 py-2 rounded-pill shadow-sm">
+            🛑 Kết thúc sử dụng
+        </button>
+    </form>
+</div>

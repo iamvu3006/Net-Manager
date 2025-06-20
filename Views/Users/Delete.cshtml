@@ -1,0 +1,31 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Xác nhận xóa người dùng";
+}
+
+<h1 class="text-danger mb-4">🗑️ Xóa người dùng</h1>
+
+<h5 class="mb-3">Bạn có chắc chắn muốn xóa người dùng sau?</h5>
+
+<div class="border rounded p-4 shadow-sm bg-light mb-3">
+    <dl class="row">
+        <dt class="col-sm-3 fw-bold">Tên đăng nhập</dt>
+        <dd class="col-sm-9">@Model.Username</dd>
+
+        <dt class="col-sm-3 fw-bold">Họ và tên</dt>
+        <dd class="col-sm-9">@Model.FullName</dd>
+
+        <dt class="col-sm-3 fw-bold">Số điện thoại</dt>
+        <dd class="col-sm-9">@Model.Phone</dd>
+
+        <dt class="col-sm-3 fw-bold">Số dư</dt>
+        <dd class="col-sm-9">@Model.Balance.ToString("N0") VNĐ</dd>
+    </dl>
+</div>
+
+<form asp-action="Delete" class="d-flex justify-content-between">
+    <input type="hidden" asp-for="UserId" />
+    <a asp-action="Index" class="btn btn-secondary">⬅️ Quay lại</a>
+    <input type="submit" value="🗑️ Xóa người dùng" class="btn btn-danger" />
+</form>

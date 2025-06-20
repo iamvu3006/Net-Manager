@@ -1,0 +1,41 @@
+﻿@model MvcMovie.Models.ChooseModel
+
+@{
+    ViewData["Title"] = "🖥️ Chọn máy tính để sử dụng";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary mb-4">@ViewData["Title"]</h2>
+
+    @if (ViewBag.Balance != null)
+    {
+        <div class="alert alert-info text-center fw-bold">
+            💰 Số dư hiện tại: <span class="text-success">@String.Format("{0:N0}", ViewBag.Balance) VNĐ</span>
+        </div>
+    }
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var comp in Model.Computers)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div class="text-center">
+                            <h5 class="card-title fw-bold text-dark">@comp.Name</h5>
+                            <p class="text-muted mb-1">💵 Giá: <strong>@String.Format("{0:N0}", comp.PricePerHour) VNĐ</strong> / giờ</p>
+                        </div>
+
+                        <form asp-action="StartUsing" method="post" class="mt-3">
+                            <input type="hidden" name="computerId" value="@comp.ComputerId" />
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary fw-bold">
+                                    🚀 Sử dụng
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
