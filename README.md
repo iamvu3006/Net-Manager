@@ -62,16 +62,9 @@ Net-Manager là một hệ thống quản lý tiệm Internet (quản lý phòng
 
 ## 📋 Một số màn hình tiêu biểu
 
-- **Đăng nhập/Đăng ký:**  
-  ![image1](image1)
-- **Chọn máy còn trống và bắt đầu sử dụng:**  
-  ![image2](image2)
-- **Theo dõi thời gian, chi phí realtime:**  
-  ![image3](image3)
-- **Nạp tiền, quản lý số dư:**  
-  ![image4](image4)
+- 📂 [Xem mã nguồn dạng VS Code (GitHub1s)](https://github1s.com/iamvu3006/Net-Manager)
+- 🧠 [Phân tích chuyên sâu (Sourcegraph)](https://sourcegraph.com/github.com/iamvu3006/Net-Manager)
 
-*(Thay các ảnh ví dụ trên bằng ảnh chụp màn hình thực tế nếu có)*
 
 ## 💡 Gợi ý mở rộng
 
@@ -82,7 +75,7 @@ Net-Manager là một hệ thống quản lý tiệm Internet (quản lý phòng
 ## 📝 Đóng góp
 
 Mọi ý kiến đóng góp, báo lỗi hoặc pull request đều được chào đón!  
-Liên hệ: [iamvu3006@gmail.com](mailto:iamvu3006@gmail.com)
+Liên hệ: [lexuanbavu@gmail.com](mailto:lexuanbavu@gmail.com)
 
 ---
 
