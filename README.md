@@ -1,82 +1,188 @@
+<div align="center">
+
 # Net-Manager
 
-Net-Manager là một hệ thống quản lý tiệm Internet (quản lý phòng máy/net) hiện đại, được xây dựng với ASP.NET Core MVC và Entity Framework, hỗ trợ đầy đủ các nghiệp vụ quản lý người dùng, máy tính, thời gian sử dụng, thanh toán, và báo cáo.
+### Nền tảng quản lý tiệm Internet hiện đại, trực quan và dễ mở rộng
 
-## 🚀 Tính năng nổi bật
+[![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
+[![ASP.NET Core MVC](https://img.shields.io/badge/ASP.NET%20Core-MVC-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://learn.microsoft.com/aspnet/core/mvc/)
+[![Entity Framework Core](https://img.shields.io/badge/Entity%20Framework%20Core-9.0-68217A?style=for-the-badge&logo=.net&logoColor=white)](https://learn.microsoft.com/ef/core/)
+[![SQL Server](https://img.shields.io/badge/SQL%20Server-2022-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white)](https://www.microsoft.com/sql-server)
 
-- **Quản lý người dùng**: Đăng ký, đăng nhập, đăng xuất, xem danh sách, cập nhật thông tin, nạp tiền tài khoản.
-- **Quản lý máy tính**: Thêm/sửa/xóa máy, theo dõi trạng thái từng máy (đang sử dụng/trống), giá theo giờ.
-- **Chọn máy và theo dõi thời gian**: Người dùng có thể chọn máy còn trống, hệ thống tự động tính toán thời gian sử dụng và chi phí realtime.
-- **Thanh toán minh bạch**: Khi kết thúc ca sử dụng, hệ thống tự trừ tiền dựa trên thời gian thực tế và cập nhật số dư tài khoản.
-- **Báo cáo & lịch sử sử dụng**: Hiển thị lịch sử sử dụng máy, thống kê thời gian và chi phí của từng người dùng.
-- **Phân quyền**: Quản trị viên và người dùng thông thường có giao diện và quyền truy cập khác nhau.
-- **Bảo mật**: Mã hóa mật khẩu SHA256, sử dụng session để lưu trạng thái đăng nhập.
+<p>
+  <a href="#-tổng-quan">Tổng quan</a> •
+  <a href="#-tính-năng">Tính năng</a> •
+  <a href="#-bắt-đầu">Bắt đầu</a> •
+  <a href="#-kiến-trúc">Kiến trúc</a> •
+  <a href="#-đóng-góp">Đóng góp</a>
+</p>
 
-## 🖼️ Giao diện
-
-- Thiết kế trực quan, thân thiện trên cả desktop và mobile.
-- Sử dụng Bootstrap 5, Razor Pages, hỗ trợ icon hiện đại.
-
-## 🛠️ Công nghệ sử dụng
-
-- **Backend**: ASP.NET Core MVC, Entity Framework Core
-- **Frontend**: Razor View Engine, Bootstrap 5, JavaScript
-- **Database**: SQL Server
-- **Authentication**: Session-based, SHA256 password hashing
-
-## ⚙️ Hướng dẫn cài đặt và chạy dự án
-
-1. **Clone dự án:**
-   ```bash
-   git clone https://github.com/iamvu3006/Net-Manager.git
-   cd Net-Manager
-   ```
-
-2. **Cập nhật chuỗi kết nối CSDL**  
-   Sửa file `appsettings.json`, điền thông tin kết nối SQL Server tại trường `NetManagementDB`.
-
-3. **Khởi tạo database:**  
-   Chạy lệnh migration của Entity Framework Core để tạo các bảng cần thiết:
-   ```bash
-   dotnet ef database update
-   ```
-
-4. **Chạy ứng dụng:**
-   ```bash
-   dotnet run
-   ```
-   Truy cập [http://localhost:5000](http://localhost:5000) (hoặc port do app thông báo) để sử dụng hệ thống.
-
-## 👤 Các vai trò trong hệ thống
-
-- **Quản trị viên:** Quản lý toàn bộ máy tính, người dùng, xem báo cáo tổng thể.
-- **Người dùng:** Đăng ký, đăng nhập, chọn máy, theo dõi thời gian sử dụng, nạp tiền, xem lịch sử cá nhân.
-
-## 📂 Cấu trúc thư mục chính
-
-- `/Controllers` - Các controller điều phối nghiệp vụ (Account, Computers, Users, UsageHistories, ...)
-- `/Models` - Định nghĩa các entity như User, Computer, UsageHistory,...
-- `/Views` - Giao diện cho từng chức năng (dùng Razor)
-- `/wwwroot` - Tài nguyên tĩnh (ảnh, CSS, JS)
-- `Program.cs` - Khởi tạo và cấu hình ứng dụng
-
-## 📋 Một số màn hình tiêu biểu
-
-- 📂 [Xem mã nguồn dạng VS Code (GitHub1s)](https://github1s.com/iamvu3006/Net-Manager)
-- 🧠 [Phân tích chuyên sâu (Sourcegraph)](https://sourcegraph.com/github.com/iamvu3006/Net-Manager)
-
-
-## 💡 Gợi ý mở rộng
-
-- Thêm tính năng đặt máy trước, quản lý dịch vụ phụ trợ (đồ ăn, nước uống).
-- Gửi thông báo khi sắp hết tiền hoặc hết thời gian.
-- Báo cáo doanh thu, phân tích hành vi người dùng, xuất file Excel/PDF.
-
-## 📝 Đóng góp
-
-Mọi ý kiến đóng góp, báo lỗi hoặc pull request đều được chào đón!  
-Liên hệ: [lexuanbavu@gmail.com](mailto:lexuanbavu@gmail.com)
+</div>
 
 ---
 
-**Net-Manager** - Giải pháp quản lý tiệm net hiện đại, dễ dùng, bảo mật và mở rộng.
+## 📌 Tổng quan
+
+**Net-Manager** là ứng dụng web quản lý tiệm Internet được xây dựng trên **ASP.NET Core MVC**. Hệ thống hỗ trợ quản lý máy trạm, tài khoản khách hàng, phiên sử dụng, số dư và doanh thu trong một giao diện tập trung.
+
+Dự án hướng đến một nền tảng đơn giản để vận hành hằng ngày nhưng vẫn có cấu trúc rõ ràng, dễ bảo trì và thuận tiện mở rộng thêm các nghiệp vụ như đặt máy, dịch vụ phụ trợ hoặc báo cáo nâng cao.
+
+## ✨ Tính năng
+
+### Dành cho khách hàng
+
+- Đăng ký, đăng nhập và đăng xuất tài khoản.
+- Xem, cập nhật thông tin cá nhân và số dư.
+- Nạp tiền vào tài khoản.
+- Xem danh sách máy đang trống hoặc đang được sử dụng.
+- Chọn máy và bắt đầu phiên sử dụng.
+- Theo dõi thời gian sử dụng và chi phí phát sinh.
+- Kết thúc phiên, tự động tính phí theo thời gian thực tế.
+- Xem lịch sử sử dụng và các khoản đã thanh toán.
+
+### Dành cho quản trị viên
+
+- Quản lý danh sách máy tính: thêm, sửa, xóa và cập nhật trạng thái.
+- Quản lý người dùng và thông tin tài khoản.
+- Theo dõi các phiên sử dụng trong hệ thống.
+- Xem báo cáo doanh thu và thống kê hoạt động.
+- Phân tách giao diện, chức năng và quyền truy cập theo vai trò.
+
+## 🧰 Công nghệ sử dụng
+
+| Thành phần | Công nghệ |
+| --- | --- |
+| Nền tảng | .NET 9 |
+| Backend | ASP.NET Core MVC |
+| ORM | Entity Framework Core 9 |
+| Cơ sở dữ liệu | Microsoft SQL Server |
+| Giao diện | Razor Views, Bootstrap, HTML, CSS, JavaScript |
+| Quản lý trạng thái | ASP.NET Core Session |
+| Môi trường phát triển | Visual Studio hoặc .NET CLI |
+
+## 🏗️ Kiến trúc
+
+```text
+Net-Manager/
+├── Controllers/       # Điều phối request và nghiệp vụ ứng dụng
+├── Models/            # Entity, DbContext và ViewModel
+├── Views/             # Giao diện Razor theo mô hình MVC
+├── Migrations/        # Lịch sử migration của Entity Framework Core
+├── wwwroot/           # CSS, JavaScript, hình ảnh và tài nguyên tĩnh
+├── Program.cs         # Đăng ký dịch vụ và cấu hình pipeline
+├── appsettings.json   # Cấu hình ứng dụng và connection string
+└── MvcMovie.csproj    # Package và cấu hình project
+```
+
+Luồng xử lý chính:
+
+```text
+Người dùng → Razor View → Controller → Entity Framework Core → SQL Server
+```
+
+## 🚀 Bắt đầu
+
+### Yêu cầu hệ thống
+
+- [.NET SDK 9](https://dotnet.microsoft.com/download/dotnet/9.0)
+- [SQL Server](https://www.microsoft.com/sql-server) hoặc SQL Server Express
+- [Git](https://git-scm.com/)
+- Công cụ migration EF Core (nếu chưa có):
+
+```bash
+dotnet tool install --global dotnet-ef
+```
+
+### 1. Clone repository
+
+```bash
+git clone https://github.com/iamvu3006/Net-Manager.git
+cd Net-Manager
+```
+
+### 2. Cấu hình cơ sở dữ liệu
+
+Cập nhật connection string `NetManagementDB` trong `appsettings.json` hoặc dùng **User Secrets** cho môi trường phát triển:
+
+```json
+{
+  "ConnectionStrings": {
+    "NetManagementDB": "Server=localhost;Database=NetManagementDB;Trusted_Connection=True;TrustServerCertificate=True"
+  }
+}
+```
+
+> Không commit thông tin kết nối hoặc thông tin nhạy cảm vào repository. Với môi trường production, nên dùng biến môi trường hoặc secret manager.
+
+### 3. Khởi tạo database
+
+```bash
+dotnet restore
+dotnet ef database update
+```
+
+Nếu cần tạo migration mới sau khi thay đổi model:
+
+```bash
+dotnet ef migrations add <MigrationName>
+dotnet ef database update
+```
+
+### 4. Chạy ứng dụng
+
+```bash
+dotnet run
+```
+
+Mở địa chỉ được hiển thị trong terminal, thường là:
+
+- `https://localhost:7xxx`
+- `http://localhost:5xxx`
+
+## 🛡️ Lưu ý bảo mật
+
+- Không sử dụng connection string mẫu trong production.
+- Bật HTTPS khi triển khai thực tế.
+- Kiểm tra và giới hạn quyền truy cập các chức năng quản trị.
+- Không lưu secret, mật khẩu hoặc dữ liệu cá nhân trong source code.
+- Nên bổ sung cơ chế hash mật khẩu hiện đại, chống giả mạo request và validation đầu vào trước khi triển khai production.
+
+## 🗺️ Định hướng phát triển
+
+- [ ] Đặt máy trước theo khung giờ.
+- [ ] Quản lý đồ ăn, thức uống và dịch vụ phụ trợ.
+- [ ] Thông báo khi số dư thấp hoặc phiên sắp kết thúc.
+- [ ] Dashboard doanh thu theo ngày, tuần và tháng.
+- [ ] Xuất báo cáo Excel/PDF.
+- [ ] API cho ứng dụng desktop hoặc mobile.
+- [ ] Container hóa và triển khai lên cloud.
+
+## 🤝 Đóng góp
+
+Mọi đóng góp đều được chào đón. Để bắt đầu:
+
+1. Fork repository.
+2. Tạo một branch mới: `git checkout -b feat/ten-tinh-nang`.
+3. Commit thay đổi: `git commit -m "feat: mo ta thay doi"`.
+4. Push branch: `git push origin feat/ten-tinh-nang`.
+5. Mở Pull Request với phần mô tả rõ ràng.
+
+Vui lòng kiểm tra ứng dụng và mô tả cách tái hiện nếu bạn báo lỗi.
+
+## 📄 Giấy phép
+
+Dự án hiện chưa công bố giấy phép sử dụng riêng. Vui lòng liên hệ chủ repository trước khi sử dụng cho mục đích thương mại hoặc phân phối lại.
+
+## 🔗 Liên kết
+
+- [Mở repository trên GitHub](https://github.com/iamvu3006/Net-Manager)
+- [Xem mã nguồn trên GitHub1s](https://github1s.com/iamvu3006/Net-Manager)
+- [Phân tích mã nguồn trên Sourcegraph](https://sourcegraph.com/github.com/iamvu3006/Net-Manager)
+
+---
+
+<div align="center">
+
+Được xây dựng với ❤️ bằng ASP.NET Core MVC
+
+</div>
